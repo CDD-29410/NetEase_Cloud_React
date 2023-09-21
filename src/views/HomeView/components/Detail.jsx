@@ -7,7 +7,7 @@ export default function Detail() {
   useEffect(() => {
     homepageBlockPage()
       .then((res) => {
-        console.log(res.data.data.blocks[3].creatives);
+        // console.log(res.data.data.blocks[3].creatives);
         setDetailData(res.data.data.blocks[3].creatives);
       })
       .catch((err) => console.log(err));
@@ -16,10 +16,10 @@ export default function Detail() {
     <div>
       <div className=" overflow-hidden mt-[5vw] border-t border-solid border-[#ccc]">
         <div className="flex justify-between items-center text-[4vw] my-[5vw] font-extrabold">
-          <p className="flex justify-between items-center text-[4vw]">
+          <div className="flex justify-between items-center text-[4vw]">
             排行榜
             <Icon icon="icon-park:right" width="5vw" height="5vw" />
-          </p>
+          </div>
           <div>
             <Icon icon="ant-design:more-outlined" width="5vw" height="5vw" />
           </div>
@@ -33,9 +33,9 @@ export default function Detail() {
               >
                 <div className="w-[90vw] px-[3vw] pb-[3vw] ">
                   <div className="flex justify-between items-center h-[10vw]">
-                    <p className="text-[4vw] font-extrabold">
+                    <div className="text-[4vw] font-extrabold">
                       {item.uiElement.mainTitle.title}
-                    </p>
+                    </div>
                     <span className="text-[#B1B2BA] text-[2.5vw]">
                       {item.uiElement.mainTitle.titleDesc}
                     </span>
@@ -55,10 +55,10 @@ export default function Detail() {
                           {index + 1}
                         </span>
                         <div className="flex flex-col justify-center w-[55vw] h-[11vw]">
-                          <p className="h-[6vw] overflow-hidden text-[3.6vw] leading-[]">
+                          <div className="h-[6vw] overflow-hidden text-[3.6vw] leading-[]">
                             {items.uiElement.mainTitle.title}
-                          </p>
-                          <p className="flex text-[2.7vw] text-[#7A8086]">
+                          </div>
+                          <div className="flex text-[2.7vw] text-[#7A8086]">
                             {items.resourceExtInfo?.songData.artists.map(
                               (names, index) => (
                                 <div key={index}>
@@ -70,7 +70,7 @@ export default function Detail() {
                                 </div>
                               )
                             )}
-                          </p>
+                          </div>
                         </div>
                         {items.uiElement.labelText.text !== "新晋" ? (
                           <div className="text-[red] w-[10vw] text-[2.2vw]">

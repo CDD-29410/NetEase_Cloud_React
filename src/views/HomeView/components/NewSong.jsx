@@ -69,14 +69,18 @@ export default function NewSong() {
           </div>
         </div>
         <Space direction="vertical" block>
-          <Swiper
-            indicator={() => null}
-            stuckAtBoundary={false}
-            slideSize={90}
-            defaultIndex={0}
-          >
-            {items}
-          </Swiper>
+          {newSongData.length > 0 ? (
+            <Swiper
+              indicator={() => null}
+              stuckAtBoundary={false}
+              slideSize={90}
+              defaultIndex={0}
+            >
+              {items}
+            </Swiper>
+          ) : (
+            ""
+          )}
         </Space>
       </div>
     </div>

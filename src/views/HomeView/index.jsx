@@ -1,5 +1,6 @@
 import React from "react";
 import { Icon } from "@iconify/react";
+import { NavLink } from "react-router-dom";
 import MarqueeInf from "./components/MarqueeInf.jsx";
 import Menulist from "./components/Menulist.jsx";
 import Playlists from "./components/Playlists.jsx";
@@ -16,7 +17,7 @@ const HomeView = () => {
           <div>
             <Icon icon="material-symbols:menu" width="8vw" height="8vw" />
           </div>
-          <div className="flex items-center relative">
+          <NavLink to="/Search" className="flex items-center relative">
             <input
               type="text"
               className=" outline-red-300 border-[1px] w-[80vw] h-[8vw] border-[#ccccdb] text-[3vw] rounded-[3vw] pl-[10vw] bg-gradient-to-r from-[#ccccdb] to-[#F0DFEC]"
@@ -34,7 +35,7 @@ const HomeView = () => {
               height="5vw"
               className="absolute left-[2vw]"
             />
-          </div>
+          </NavLink>
           <Icon icon="ph:microphone-light" width="8vw" height="8vw" />
         </div>
         {/* 轮播 */}

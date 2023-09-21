@@ -48,16 +48,20 @@ const Playlists = () => {
             <ul className="w-[250vw] flex justify-between relative">
               {/* <div className=" absolute bottom-[5vw] left-[0vw]">11</div> */}
               <li className="w-[32vw] h-[43vw] overflow-hidden relative">
-                <Swiper
-                  autoplay
-                  loop
-                  autoplayInterval="5000"
-                  direction="vertical"
-                  indicator={() => null}
-                  style={{ "--height": "44vw" }}
-                >
-                  {verticalItems}
-                </Swiper>
+                {PlaylistData.length > 0 ? (
+                  <Swiper
+                    autoplay
+                    loop
+                    autoplayInterval="5000"
+                    direction="vertical"
+                    indicator={() => null}
+                    style={{ "--height": "44vw" }}
+                  >
+                    {verticalItems}
+                  </Swiper>
+                ) : (
+                  ""
+                )}
                 <Icon
                   icon="carbon:edt-loop"
                   color="#fff"

@@ -17,9 +17,13 @@ export default function MarqueeInf() {
   ));
   return (
     <div className="h-[39vw] mt-[5vw]">
-      <Swiper autoplay loop>
-        {items}
-      </Swiper>
+      {Marquee && Marquee.length > 0 ? (
+        <Swiper autoplay loop>
+          {items}
+        </Swiper>
+      ) : (
+        ""
+      )}
     </div>
   );
 }
