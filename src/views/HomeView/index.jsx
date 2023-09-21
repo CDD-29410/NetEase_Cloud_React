@@ -14,7 +14,7 @@ const HomeView = () => {
     <div className="pb-[20vw]">
       <div className=" caret-transparent p-[3vw] bg-gradient-to-b from-[#8174c8] to-[#fff]">
         <div className="flex justify-between items-center">
-          <div>
+          <div onClick={() => console.log(111)}>
             <Icon icon="material-symbols:menu" width="8vw" height="8vw" />
           </div>
           <NavLink to="/Search" className="flex items-center relative">
@@ -36,7 +36,9 @@ const HomeView = () => {
               className="absolute left-[2vw]"
             />
           </NavLink>
-          <Icon icon="ph:microphone-light" width="8vw" height="8vw" />
+          <NavLink to="/bar">
+            <Icon icon="ph:microphone-light" width="8vw" height="8vw" />
+          </NavLink>
         </div>
         {/* 轮播 */}
         <MarqueeInf />

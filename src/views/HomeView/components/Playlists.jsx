@@ -23,12 +23,13 @@ const Playlists = () => {
   const verticalItems = PlaylistData.map((item, index) => (
     <Swiper.Item key={index}>
       <div>
-        {/* {console.log(index)} */}
         <img src={item.picUrl} alt="" className="w-[32vw] h-[32vw]" />
-        <div className=" z-50 absolute h-[11vw] bottom-[0vw] line-clamp-2 left-[0vw]">
-          {item.name}
-        </div>
       </div>
+    </Swiper.Item>
+  ));
+  const verticalName = PlaylistData.map((item, index) => (
+    <Swiper.Item key={index}>
+      <div className="w-[32vw] h-[11vw]">{item.name}</div>
     </Swiper.Item>
   ));
   return (
@@ -46,8 +47,23 @@ const Playlists = () => {
         <div className="h-[45vw] mt-[2vw] overflow-hidden">
           <div className=" lunbo overflow-x-auto">
             <ul className="w-[250vw] flex justify-between relative">
-              {/* <div className=" absolute bottom-[5vw] left-[0vw]">11</div> */}
-              <li className="w-[32vw] h-[43vw] overflow-hidden relative">
+              <div className="absolute h-[11vw] bottom-[0vw] line-clamp-2 left-[0vw]">
+                {PlaylistData.length > 0 ? (
+                  <Swiper
+                    autoplay
+                    loop
+                    autoplayInterval="5000"
+                    indicator={() => null}
+                    className="w-[32vw] overflow-hidden"
+                  >
+                    {verticalName}
+                  </Swiper>
+                ) : (
+                  ""
+                )}
+              </div>
+
+              <li className="w-[32vw] h-[32vw] overflow-hidden relative">
                 {PlaylistData.length > 0 ? (
                   <Swiper
                     autoplay

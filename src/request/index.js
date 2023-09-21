@@ -20,7 +20,7 @@ export const personalized = () => http.get('/personalized')
 export const startTime = () => http.get(`/calendar?startTime=1677417600000&endTime=1677417600000`)
 
 // 搜索
-export const HotSearch = () => http.get('/toplist/detail')
+// export const HotSearch = () => http.get('/toplist/detail')
 
 export async function fetchToplistDetail() {
   const res = await http.get('/toplist/detail');
