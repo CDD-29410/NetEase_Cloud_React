@@ -7,17 +7,10 @@ export default function SearchNav() {
   const [SearchInf, setSearchInf] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const playlist = await fetchToplistDetail();
-        // 在这里处理 playlist，例如将其存储到组件状态或进行其他操作
-        setSearchInf(playlist.slice(0, 10));
-      } catch (error) {
-        console.error(error); // 处理错误情况
-      }
-    };
-    fetchData(); // 调用 fetchData 函数来触发数据获取
-  }, []); // 空数组作为第二个参数表示这个效果只会在组件加载时执行一次
+    fetchToplistDetail()
+      .then((res) => setSearchInf(res))
+      .catch((err) => console.log(err));
+  }, []);
   const items = SearchInf.map((item, index) => (
     <Swiper.Item key={index}>
       <div className=" mr-[2vw]" style={{ background: item }}>

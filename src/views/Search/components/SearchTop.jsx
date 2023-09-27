@@ -25,7 +25,6 @@ const menu = {
   like: ["笼", "我想念", "法老", "张杰", "爱情转移"],
 };
 export default function SearchTop() {
-  // onchange = () => {};
   useEffect(() => {
     SearchBox()
       .then((res) => console.log(res))
@@ -48,8 +47,8 @@ export default function SearchTop() {
             {/* <!-- 搜索框 --> */}
             <div className="relative">
               <input
-                onChange={() => {
-                  console.log("111");
+                onChange={(e) => {
+                  console.log(e.target.value);
                 }}
                 type="text"
                 className="text-[3vw] bg-white opacity-0.2  w-[75vw] h-[8vw] border-[1px] rounded-[3vw] pl-[10vw] dark:bg-[#31333a] dark:text-[#e9e9e9]  dark:border-[1px] dark:border-[#31333a]"

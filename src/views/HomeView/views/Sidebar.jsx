@@ -1,5 +1,6 @@
 import React from "react";
 import { Icon } from "@iconify/react";
+import SidebarNav from "./SidebarNav";
 
 export default function SideBar() {
   return (
@@ -57,6 +58,8 @@ export default function SideBar() {
             </div>
           </div>
         </div>
+        <SidebarNav />
+        <div></div>
       </div>
     </div>
   );

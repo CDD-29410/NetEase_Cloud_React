@@ -1,9 +1,34 @@
 import React from "react";
+import { Icon } from "@iconify/react";
 export default function MineHome() {
   const MineHomeInf = [
-    { key: "MineHome", title: "我的喜欢", BGC: "#FEE7EA" },
-    { key: "MineDynamic", title: "累计听歌", BGC: "#FAF4DA" },
-    { key: "MinePodcasts", title: "步骤关键词", BGC: "#EBF1F9" },
+    {
+      title: "我的喜欢",
+      inf: "喜欢的音乐",
+      style: {
+        borderColor: "#FEE7EA",
+        background: "linear-gradient(#FEE7EA, #FEF5F6)",
+      },
+      icon: <Icon icon="mdi:heart" />,
+    },
+    {
+      title: "累计听歌",
+      inf: "听歌的排行",
+      style: {
+        borderColor: "#FAF4DA",
+        background: "linear-gradient(#FAF4DA, #FDFBF0)",
+      },
+      icon: <Icon icon="mdi:heart" />,
+    },
+    {
+      title: "步骤关键词",
+      inf: "黑胶时光机",
+      style: {
+        borderColor: "#EBF1F9",
+        background: "linear-gradient(#EBF1F9, #F6F9FC)",
+      },
+      icon: <Icon icon="mdi:heart" />,
+    },
   ];
   return (
     <>
@@ -13,14 +38,19 @@ export default function MineHome() {
           {MineHomeInf.map((item, index) => (
             <div
               key={index}
-              style={{ borderColor: item.BGC }}
-              className="flex flex-col justify-between w-[26vw] h-[30vw] border text-[#999] text-[12px] p-[2vw] "
+              style={item.style}
+              className="flex rounded-[2vw] flex-col justify-between w-[26vw] h-[30vw] border text-[#999] text-[12px] p-[2vw] "
             >
               <div>
-                <span>{item.title}</span>
-                <p className="text-[4vw] font-[600] text-[#333]">1111</p>
+                <div className="h-[5vw]">{item.title}</div>
+                <p className="text-[4vw]  line-clamp-2 font-[600] text-[#333]">
+                  1111大大1111大大1111大大1111大大1111大大
+                </p>
               </div>
-              <p>1111</p>
+              <div className="flex items-center truncate">
+                {item.icon}
+                <span>{item.inf}</span>
+              </div>
             </div>
           ))}
         </div>
