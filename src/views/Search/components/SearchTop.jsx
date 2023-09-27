@@ -27,7 +27,7 @@ const menu = {
 export default function SearchTop() {
   useEffect(() => {
     SearchBox()
-      .then((res) => console.log(res))
+      // .then((res) => console.log(res))
       .catch((err) => console.log(err));
   }, []);
   return (

@@ -8,7 +8,7 @@ export default function SearchNav() {
 
   useEffect(() => {
     fetchToplistDetail()
-      .then((res) => setSearchInf(res))
+      .then((res) => setSearchInf(res.slice(0, 10)))
       .catch((err) => console.log(err));
   }, []);
   const items = SearchInf.map((item, index) => (
