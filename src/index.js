@@ -8,4 +8,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 // 2.调用dispatchAction
 // 3.其父组件重新渲染
 // 4.props参数发生变化的时候
-root.render(<App />);
+root.render(
+  <App />
+);

@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Swiper } from "antd-mobile";
 import { homepageBlockPage } from "../../../request/index";
+import SkeletonInf from "@/components/Skeleton";
 
 export default function MarqueeInf() {
   const [Marquee, setMarquee] = useState([]);
@@ -16,14 +17,16 @@ export default function MarqueeInf() {
     </Swiper.Item>
   ));
   return (
-    <div className="h-[39vw] mt-[5vw]">
-      {Marquee && Marquee.length > 0 ? (
-        <Swiper autoplay loop>
-          {items}
-        </Swiper>
-      ) : (
-        ""
-      )}
-    </div>
+    <>
+      <div className="h-[39vw] mt-[5vw]">
+        {Marquee.length > 0 ? (
+          <Swiper autoplay loop>
+            {items}
+          </Swiper>
+        ) : (
+          <SkeletonInf />
+        )}
+      </div>
+    </>
   );
 }

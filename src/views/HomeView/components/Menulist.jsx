@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { homepageDragonBall } from "../../../request/index.js";
+import SkeletonInf from "@/components/Skeleton.jsx";
 import dayjs from "dayjs";
 const Space = styled.div`
   .red-image {
@@ -26,32 +27,36 @@ const Menulist = () => {
   return (
     <Space>
       <div className="overflow-hidden mt-[5vw] h-[20vw]">
-        <ul className="ClearLine overflow-x-auto flex ">
-          {MenulistData.map((item, index) => (
-            <div
-              key={index}
-              className="flex items-center justify-between relative"
-            >
-              <div className="flex flex-col  items-center w-[20vw] h-[20vw]">
-                <div className="w-[20vw] flex justify-center ">
-                  <img
-                    src={item.iconUrl}
-                    alt=""
-                    className="red-image w-[11vw] h-[9vw]"
-                  />
+        {MenulistData.length > 0 ? (
+          <ul className="ClearLine overflow-x-auto flex ">
+            {MenulistData.map((item, index) => (
+              <div
+                key={index}
+                className="flex items-center justify-between relative"
+              >
+                <div className="flex flex-col  items-center w-[20vw] h-[20vw]">
+                  <div className="w-[20vw] flex justify-center ">
+                    <img
+                      src={item.iconUrl}
+                      alt=""
+                      className="red-image w-[11vw] h-[9vw]"
+                    />
+                  </div>
+                  <span className="text-[#636972] text-[3vw]">{item.name}</span>
                 </div>
-                <span className="text-[#636972] text-[3vw]">{item.name}</span>
+                {index === 0 ? (
+                  <p className="absolute text-[3.3vw] text-[#fff] left-[8vw] top-[2vw]">
+                    {dayjs(new Date()).format("DD")}
+                  </p>
+                ) : (
+                  ""
+                )}
               </div>
-              {index === 0 ? (
-                <p className="absolute text-[3.3vw] text-[#fff] left-[8vw] top-[2vw]">
-                  {dayjs(new Date()).format("DD")}
-                </p>
-              ) : (
-                ""
-              )}
-            </div>
-          ))}
-        </ul>
+            ))}
+          </ul>
+        ) : (
+          <SkeletonInf />
+        )}
       </div>
     </Space>
   );

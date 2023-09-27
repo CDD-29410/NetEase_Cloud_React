@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Swiper } from "antd-mobile";
 import { Icon } from "@iconify/react";
+import { SpinLoading } from "antd-mobile";
 import { fetchToplistDetail } from "@/request";
 export default function SearchNav() {
   const [SearchInf, setSearchInf] = useState([]);
@@ -68,12 +69,14 @@ export default function SearchNav() {
   return (
     <>
       <div className="mt-[5vw]">
-        {SearchInf.length > 0 ? (
+        {SearchInf.length <= 0 ? (
+          <div className="mt-[50vw] h-[50vw] flex justify-center">
+            <SpinLoading style={{ "--size": "48px" }} />
+          </div>
+        ) : (
           <Swiper slideSize={65} trackOffset={15} indicator={() => null}>
             {items}
           </Swiper>
-        ) : (
-          ""
         )}
       </div>
     </>

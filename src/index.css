@@ -1,6 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+body {
+  caret-color: transparent;
+}
 input::-webkit-input-placeholder {
   color: #66577c;
   font-size: 3vw;

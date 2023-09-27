@@ -27,3 +27,10 @@ export async function fetchToplistDetail() {
   const playlist = await Promise.all(res.data.list.map(({ id }) => http.get('playlist/detail', { params: { id } })));
   return playlist.map(item => item.data.playlist)
 }
+
+//搜索框
+export const SearchBox = (params) => http.get(`cloudsearch?keywords=${params}`)
+
+// MV 排行
+
+export const MVRanking = (area) => http.get("/top/mv", { params: { area } })
