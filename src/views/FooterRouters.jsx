@@ -1,7 +1,7 @@
 import React from "react";
 import { TabBar } from "antd-mobile";
 import { Icon } from "@iconify/react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 const Div = styled.div`
@@ -18,6 +18,8 @@ const Div = styled.div`
   }
 `;
 export default function Footer() {
+  const location = useLocation();
+
   const tabs = [
     {
       key: "Found",
@@ -51,16 +53,17 @@ export default function Footer() {
       to: "/Search",
     },
   ];
-  const navigate = useNavigate();
 
+  const navigate = useNavigate();
   const toA = (props) => {
     navigate(tabs.find((item) => item.key === props).to);
   };
   return (
     <Div>
       <TabBar
+        activeKey={location}
         onChange={toA}
-        className=" caret-transparent fixed bottom-0 left-0 right-0 bg-[#fff]"
+        className="caret-transparent fixed bottom-0 left-0 right-0 bg-[#fff]"
       >
         {tabs.map((item) => (
           <TabBar.Item key={item.key} icon={item.icon} title={item.title} />

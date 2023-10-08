@@ -3,6 +3,7 @@ import { Swiper } from "antd-mobile";
 import { Icon } from "@iconify/react";
 import { SpinLoading } from "antd-mobile";
 import { fetchToplistDetail } from "@/request";
+import { toplistDetail, playlistDetail } from "@/request";
 export default function SearchNav() {
   const [SearchInf, setSearchInf] = useState([]);
 
@@ -11,6 +12,18 @@ export default function SearchNav() {
       .then((res) => setSearchInf(res.slice(0, 10)))
       .catch((err) => console.log(err));
   }, []);
+
+  // 测试
+  // useEffect(() => {
+  //   toplistDetail()
+  //     .then((res) => {
+  //       return Promise.all(
+  //         res.data.list.map((item) => playlistDetail({ id: item.id }))
+  //       );
+  //     })
+  //     .then((res) => console.log("这是第二次请求的数据：", res))
+  //     .catch((err) => console.log(err));
+  // }, []);
   const items = SearchInf.map((item, index) => (
     <Swiper.Item key={index}>
       <div className=" mr-[2vw]" style={{ background: item }}>

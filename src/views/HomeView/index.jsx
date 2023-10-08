@@ -2,20 +2,21 @@ import React, { useState } from "react";
 import { Icon } from "@iconify/react";
 import { NavLink } from "react-router-dom";
 import { Popup } from "antd-mobile";
-import MarqueeInf from "./components/MarqueeInf.jsx";
-import Menulist from "./components/Menulist.jsx";
-import Playlists from "./components/Playlists.jsx";
-import NewSong from "./components/NewSong.jsx";
-import Detail from "./components/Detail.jsx";
-import HotTopic from "./components/HotTopic.jsx";
-import Calendar from "./components/Calendar.jsx";
-import SideBar from "./views/Sidebar.jsx";
+import MarqueeInf from "./views/MarqueeInf.jsx";
+import Menulist from "./views/Menulist.jsx";
+import Playlists from "./views/Playlists.jsx";
+import NewSong from "./views/NewSong.jsx";
+import Detail from "./views/Detail.jsx";
+import HotTopic from "./views/HotTopic.jsx";
+import Calendar from "./views/Calendar.jsx";
+import SideBar from "./components/Sidebar.jsx";
+import Footer from "../FooterRouters.jsx";
 
 const HomeView = () => {
   const [visible3, setVisible3] = useState(false);
   return (
     <>
-      <div className="pb-[20vw]">
+      <div className="pb-[20vw] ">
         <div className=" caret-transparent p-[3vw] bg-gradient-to-b from-[#8174c8] to-[#fff]">
           <div className="flex justify-between items-center">
             <div
@@ -78,6 +79,8 @@ const HomeView = () => {
 
           {/* 音乐日历 Calendar */}
           <Calendar />
+
+          <Footer />
         </div>
       </div>
     </>

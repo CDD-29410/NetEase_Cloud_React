@@ -1,10 +1,15 @@
 import React from "react";
 import { Icon } from "@iconify/react";
+import { Button, Modal } from "antd-mobile";
 import SidebarNav from "./SidebarNav";
+import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+const Div = styled.div``;
 
 export default function SideBar() {
+  const navigate = useNavigate();
   return (
-    <div className=" h-screen overflow-y-auto">
+    <div className="h-screen overflow-y-auto bg-[#F5F5F5]">
       <div className="p-[3vw]">
         <div className="flex items-center justify-between w-[80vw] h-[10vw]">
           <div className="flex items-center">
@@ -13,13 +18,13 @@ export default function SideBar() {
               src="https://th.bing.com/th?id=OIP.6c-mOyg4bbaIv8E-sO-upgHaHm&w=246&h=253&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
               alt=""
               onClick={() => {
-                console.log("这是头像");
+                navigate("/Mine");
               }}
             />
             <span
               className="ml-[2vw] text-[4vw]"
               onClick={() => {
-                console.log("这是名字");
+                navigate("/Login");
               }}
             >
               立即登录
@@ -59,7 +64,36 @@ export default function SideBar() {
           </div>
         </div>
         <SidebarNav />
-        <div></div>
+        {/* h-[12.5vw] */}
+        <div className="mt-[3vw] w-[100%] bg-[#fff] text-[5vw] rounded-[2vw] text-[red] ">
+          <Button
+            block
+            onClick={() => {
+              Modal.show({
+                content: "确认退出吗",
+                closeOnAction: true,
+                actions: [
+                  {
+                    key: "online",
+                    text: "确定",
+                    primary: true,
+                    style: { backgroundColor: "#1677ff" },
+                    onClick: () => {
+                      console.log("1111");
+                    },
+                  },
+                  {
+                    key: "download",
+                    None: true,
+                    text: "取消",
+                  },
+                ],
+              });
+            }}
+          >
+            退出登录
+          </Button>
+        </div>
       </div>
     </div>
   );

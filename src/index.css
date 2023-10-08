@@ -19,3 +19,18 @@ body {
   height: 0px;
   width: 20px;
 }
+
+.adm-space.adm-space-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.adm-space-vertical > .adm-space-item {
+  margin-bottom: 0 !important;
+}
+
+.adm-auto-center-content {
+  font-size: 20px;
+  font-weight: 600;
+}

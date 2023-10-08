@@ -5,6 +5,7 @@ import { Icon } from "@iconify/react";
 import { Swiper } from "antd-mobile";
 import { personalized } from "@/request/index";
 import SkeletonInf from "@/components/Skeleton";
+import { useNavigate } from "react-router-dom";
 
 const Div = styled.div`
   .lunbo::-webkit-scrollbar {
@@ -12,18 +13,20 @@ const Div = styled.div`
     width: 20px;
   }
 `;
+
 const Playlists = () => {
   // const wrapperRef = useRef(null);
   // useEffect(() => {
   //   new BScroll(wrapperRef.current, {});
   // });
-  const [Playlist, setPlaylist] = useState([]);
-  const [PlaylistData, setPlaylistData] = useState([]);
+  const navigate = useNavigate();
+  const [Playlist, setPlaylist] = useState([]); //展示部分
+  const [PlaylistData, setPlaylistData] = useState([]); //轮播部分获取点击后id
   useEffect(() => {
     personalized()
       .then((res) => {
-        setPlaylistData(res.data.result.slice(6, 12));
         setPlaylist(res.data.result.slice(0, 6));
+        setPlaylistData(res.data.result.slice(6, 12));
       })
       .catch((err) => console.log(err));
   }, []);
@@ -36,7 +39,7 @@ const Playlists = () => {
   ));
   const verticalName = PlaylistData.map((item, index) => (
     <Swiper.Item key={index}>
-      <div className="w-[32vw] h-[11vw]">{item.name}</div>
+      <div className="w-[32vw] line-clamp-2 h-[11vw]">{item.name}</div>
     </Swiper.Item>
   ));
   return (
@@ -56,28 +59,27 @@ const Playlists = () => {
           {PlaylistData.length > 0 ? (
             // ref={wrapperRef}
             <div className="lunbo overflow-x-auto">
-              <ul className=" w-[250vw] flex justify-between relative">
+              <div className=" w-[250vw] flex justify-between relative">
                 <div className="absolute h-[11vw] bottom-[0vw] line-clamp-2 left-[0vw]">
                   {PlaylistData.length > 0 ? (
                     <Swiper
                       autoplay
                       loop
+                      allowTouchMove={false}
                       autoplayInterval="5000"
                       indicator={() => null}
                       className="w-[32vw] overflow-hidden"
                     >
                       {verticalName}
                     </Swiper>
-                  ) : (
-                    ""
-                  )}
+                  ) : null}
                 </div>
-
-                <li className="w-[32vw] h-[32vw] overflow-hidden relative">
+                <div className="w-[32vw] h-[32vw] overflow-hidden relative">
                   {PlaylistData.length > 0 ? (
                     <Swiper
                       autoplay
                       loop
+                      allowTouchMove={false}
                       autoplayInterval="5000"
                       direction="vertical"
                       indicator={() => null}
@@ -85,9 +87,7 @@ const Playlists = () => {
                     >
                       {verticalItems}
                     </Swiper>
-                  ) : (
-                    ""
-                  )}
+                  ) : null}
                   <Icon
                     icon="carbon:edt-loop"
                     color="#fff"
@@ -95,9 +95,14 @@ const Playlists = () => {
                     height="6.5vw"
                     className=" absolute top-[2vw] right-[2vw]"
                   />
-                </li>
+                </div>
                 {Playlist.map((item, index) => (
-                  <div className="" key={index}>
+                  <div
+                    key={index}
+                    onClick={() => {
+                      navigate(`/PlaylistsInf/${item.id}`);
+                    }}
+                  >
                     <div className="w-[32vw] h-[43vw]">
                       <div>
                         <div className="relative">
@@ -135,7 +140,7 @@ const Playlists = () => {
                     </div>
                   </div>
                 ))}
-              </ul>
+              </div>
             </div>
           ) : (
             <SkeletonInf />

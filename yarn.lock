@@ -8946,6 +8946,11 @@ stop-iteration-iterator@^1.0.0:
   dependencies:
     internal-slot "^1.0.4"
 
+storejs@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.npmmirror.com/storejs/-/storejs-2.0.6.tgz#f0c447baa889e7c55d637b82a98fe76f9356dea1"
+  integrity sha512-JcznOtEe10w3A0UdaltC1+fR9/x2uEBDTzrxsyUWpIadueYorWAClQjXoQGZhR/q+/584nIN3mIp9olf3Yefow==
+
 string-length@^4.0.1:
   version "4.0.2"
   resolved "https://registry.npmmirror.com/string-length/-/string-length-4.0.2.tgz#a8a8dc7bd5c1a82b9b3c8b87e125f66871b6e57a"

@@ -3,11 +3,10 @@ import { Icon } from "@iconify/react";
 import { Switch } from "antd-mobile";
 import { nav } from "./nav";
 export default function sidebarNav() {
-  console.log(nav);
   return (
     <>
       {nav.map((item, index) => (
-        <div key={index} className="bg-[#f5f5f5] mt-[3vw]  rounded-[2vw]">
+        <div key={index} className="bg-[#fff] mt-[3vw]  rounded-[2vw]">
           {item.title ? (
             <div className="h-[9vw] leading-[9vw] pl-[5vw] text-[2.9vw] text-[#9B8B86] border-[#ccc]">
               {item.title}
