@@ -2,9 +2,7 @@ import React from "react";
 import { Icon } from "@iconify/react";
 import { Button, Modal } from "antd-mobile";
 import SidebarNav from "./SidebarNav";
-import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-const Div = styled.div``;
 
 export default function SideBar() {
   const navigate = useNavigate();

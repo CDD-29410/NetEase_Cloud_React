@@ -8,7 +8,6 @@ import "./index.css";
 import Bar from "./components/Bar.jsx";
 import Login from "./views/Login";
 import PlaylistsInf from "./views/HomeView/components/PlaylistsInf";
-import Footer from "./views/FooterRouters";
 
 const App = () => {
   return (

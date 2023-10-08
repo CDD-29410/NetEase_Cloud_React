@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import BScroll from "@better-scroll/core";
 import { Icon } from "@iconify/react";
 import { Swiper } from "antd-mobile";
 import { personalized } from "@/request/index";
@@ -15,10 +14,6 @@ const Div = styled.div`
 `;
 
 const Playlists = () => {
-  // const wrapperRef = useRef(null);
-  // useEffect(() => {
-  //   new BScroll(wrapperRef.current, {});
-  // });
   const navigate = useNavigate();
   const [Playlist, setPlaylist] = useState([]); //展示部分
   const [PlaylistData, setPlaylistData] = useState([]); //轮播部分获取点击后id

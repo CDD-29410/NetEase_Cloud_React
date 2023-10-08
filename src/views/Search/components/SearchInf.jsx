@@ -3,7 +3,6 @@ import { Swiper } from "antd-mobile";
 import { Icon } from "@iconify/react";
 import { SpinLoading } from "antd-mobile";
 import { fetchToplistDetail } from "@/request";
-import { toplistDetail, playlistDetail } from "@/request";
 export default function SearchNav() {
   const [SearchInf, setSearchInf] = useState([]);
 
