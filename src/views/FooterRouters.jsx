@@ -33,7 +33,6 @@ export default function Footer() {
       icon: <Icon icon="mingcute:radar-line" />,
       to: "/Podcasts",
     },
-
     {
       key: "Mine",
       title: "我的",

@@ -31,9 +31,6 @@ export async function fetchToplistDetail() {
   return playlist.map((item) => item.data.playlist);
 }
 
-//测试
-export const toplistDetail = () => http.get("/toplist/detail");
-
 //歌单
 export const playlistDetail = (id) =>
   http.get("playlist/detail", { params: { id } });
