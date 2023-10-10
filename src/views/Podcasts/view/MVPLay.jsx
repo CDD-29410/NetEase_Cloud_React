@@ -21,7 +21,7 @@ export default function MvPlaying(props) {
   }, []);
   return MVPlayInf ? (
     <>
-      <div className="bg-[#123124] flex items-centers h-[56vw] justify-center mb-[5vw] mt-[50vw]">
+      <div className="flex items-centers h-[56vw] justify-center mb-[5vw] mt-[50vw]">
         <video src={MVPlay?.url} loop autoPlay></video>
       </div>
       <div className="h-[70vw] relative">

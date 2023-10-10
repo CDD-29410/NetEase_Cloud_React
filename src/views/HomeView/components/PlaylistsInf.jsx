@@ -1,15 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Icon } from "@iconify/react";
 import { NoticeBar, Skeleton } from "antd-mobile";
 import { useLocation, useNavigate } from "react-router-dom";
 import { playlistDetail, playlistTrackAll } from "@/request";
+import BroadcastHall from "@/play/BroadcastHall";
 
 const PlaylistsInf = () => {
   let location = useLocation().pathname.split("/")[2];
   const [ListsInf, setListsInf] = useState(); // 歌单数据
   const [playlistTrack, setPlaylistTrack] = useState(); // 歌单所有歌曲数据
-  const [isChange, setIsChange] = useState(false); //是否旋转
+  const [isChange, setIsChange] = useState(true); //是否旋转
+  const [visible, setVisible] = useState(false); //弹出层是否开启
+  const [songID, setSongID] = useState(); //歌曲信息
+  const [num, setNum] = useState(true); //设置切换值
   const navigate = useNavigate();
+
+  const Ref = useRef();
+
   useEffect(() => {
     playlistTrackAll(location)
       .then((res) => {
@@ -23,28 +30,29 @@ const PlaylistsInf = () => {
         setListsInf(res.data.playlist);
       })
       .catch((err) => console.log(err));
+    setVisible(Ref.current);
   }, [location]);
 
   const listsInf = [
     {
       icon: "majesticons:share",
       context:
-        ListsInf?.shareCount / 10000 > 0
-          ? (ListsInf?.shareCount / 10000).toFixed(2) + "万"
+        ListsInf?.shareCount / 10000 > 1
+          ? (ListsInf?.shareCount / 10000).toFixed(1) + "万"
           : ListsInf?.shareCount,
     },
     {
       icon: "iconamoon:comment-dots-fill",
       context:
-        ListsInf?.commentCount / 10000 > 0
-          ? (ListsInf?.commentCount / 10000).toFixed(2) + "万"
+        ListsInf?.commentCount / 10000 > 1
+          ? (ListsInf?.commentCount / 10000).toFixed(1) + "万"
           : ListsInf?.commentCount,
     },
     {
       icon: "solar:calendar-add-bold",
       context:
-        ListsInf?.subscribedCount / 10000 > 0
-          ? (ListsInf?.subscribedCount / 10000).toFixed(2) + "万"
+        ListsInf?.subscribedCount / 10000 > 1
+          ? (ListsInf?.subscribedCount / 10000).toFixed(1) + "万"
           : ListsInf?.subscribedCount,
     },
   ];
@@ -97,7 +105,6 @@ const PlaylistsInf = () => {
           icon="ph:caret-down-bold"
           onClick={() => {
             setIsChange(!isChange);
-            console.log(isChange);
           }}
           style={
             isChange === true
@@ -108,64 +115,66 @@ const PlaylistsInf = () => {
           }
           className="w-[5vw] h-[5vw] bg-[#787A81] absolute right-[4vw] text-[7vw] transition border border-[#CCCCCD] p-[1vw] rounded-full"
         />
-        <div>
-          <div className="flex mt-[5vw] px-[3vw]">
-            <div className="flex">
-              <img
-                src={ListsInf.coverImgUrl}
-                alt=""
-                className="w-[24.5vw] h-[24.5vw] rounded-[2vw] "
-              />
-              <div className="ml-[3vw] flex flex-col">
-                <div className="text-[3.5vw] text-[#F8F8F9] font-[700] line-clamp-2">
-                  {ListsInf.name}
-                </div>
-                <div className="flex items-center mt-[2.5vw] ">
-                  <img
-                    src={ListsInf.creator.backgroundUrl}
-                    alt=""
-                    className="w-[5.8vw] h-[5.8vw] rounded-[50%]"
-                  />
-                  <span className="text-[2.8vw] text-[#BCBBC3] ml-[1.8vw]">
-                    {ListsInf.creator.nickname}
-                  </span>
-                  <div className="text-[2.3vw] text-[#C4C3CB] ml-[1vw] w-[11vw] h-[5vw] leading-[5vw] bg-[#7B7A82] text-center rounded-[2.5vw]">
-                    <span className="mr-[1vw]">+</span>关注
+        {isChange ? (
+          <div>
+            <div className="flex mt-[5vw] px-[3vw]">
+              <div className="flex">
+                <img
+                  src={ListsInf.coverImgUrl}
+                  alt=""
+                  className="w-[24.5vw] h-[24.5vw] rounded-[2vw] "
+                />
+                <div className="ml-[3vw] flex flex-col">
+                  <div className="text-[3.5vw] text-[#F8F8F9] font-[700] line-clamp-2">
+                    {ListsInf.name}
                   </div>
-                </div>
-                <div className="mt-[2.2vw] flex ">
-                  {ListsInf.tags.map((item, index) => (
-                    <div
-                      className="mr-[2vw] px-[1.4vw]  h-[4vw] bg-[#84878E] flex items-center justify-evenly rounded-[1vw] "
-                      key={index}
-                    >
-                      <span className="text-[2.3vw] text-[#F0EFF7]">
-                        {item}
-                      </span>
-                      <Icon
-                        icon="teenyicons:right-outline"
-                        color="white"
-                        width="2vw"
-                        height="2vw"
-                      />
+                  <div className="flex items-center mt-[2.5vw] ">
+                    <img
+                      src={ListsInf.creator.backgroundUrl}
+                      alt=""
+                      className="w-[5.8vw] h-[5.8vw] rounded-[50%]"
+                    />
+                    <span className="text-[2.8vw] text-[#BCBBC3] ml-[1.8vw]">
+                      {ListsInf.creator.nickname}
+                    </span>
+                    <div className="text-[2.3vw] text-[#C4C3CB] ml-[1vw] w-[11vw] h-[5vw] leading-[5vw] bg-[#7B7A82] text-center rounded-[2.5vw]">
+                      <span className="mr-[1vw]">+</span>关注
                     </div>
-                  ))}
+                  </div>
+                  <div className="mt-[2.2vw] flex ">
+                    {ListsInf.tags.map((item, index) => (
+                      <div
+                        className="mr-[2vw] px-[1.4vw]  h-[4vw] bg-[#84878E] flex items-center justify-evenly rounded-[1vw] "
+                        key={index}
+                      >
+                        <span className="text-[2.3vw] text-[#F0EFF7]">
+                          {item}
+                        </span>
+                        <Icon
+                          icon="teenyicons:right-outline"
+                          color="white"
+                          width="2vw"
+                          height="2vw"
+                        />
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
+            <div className="mt-[4.4vw] flex justify-between items-center px-[3vw]">
+              <span className=" text-[2.78vw] w-[90vw] text-[#C0C2C9] truncate">
+                {ListsInf.description}
+              </span>
+              <Icon
+                icon="teenyicons:right-outline"
+                color="white"
+                width="3vw"
+                height="3vw"
+              />
+            </div>
           </div>
-          <div className="mt-[4.4vw] flex justify-between items-center px-[3vw]">
-            <span className=" text-[2.78vw] w-[90vw] text-[#C0C2C9] truncate">
-              {ListsInf.description}
-            </span>
-            <Icon
-              icon="teenyicons:right-outline"
-              color="white"
-              width="3vw"
-              height="3vw"
-            />
-          </div>
-        </div>
+        ) : null}
 
         <div className="flex items-center overflow-hidden justify-between mt-[4.4vw] px-[3vw]">
           {listsInf.map((item, index) => (
@@ -216,7 +225,14 @@ const PlaylistsInf = () => {
         </div>
         <div className="px-[3vw]">
           {playlistTrack?.map((item, index) => (
-            <div key={index} onClick={() => console.log(item.name)}>
+            <div
+              key={index}
+              onClick={() => {
+                setVisible(true);
+                setNum(!num);
+                setSongID(item);
+              }}
+            >
               <div className="flex items-center justify-between h-[15vw]">
                 <div className="text-[3.6vw] w-[5vw] text-center text-[#A4A4A4]">
                   {index + 1}
@@ -240,7 +256,9 @@ const PlaylistsInf = () => {
                     {item.ar.length > 0
                       ? item.ar.map((items, index) => (
                           <span key={index}>
-                            {index ? items.name + "/" : items.name}
+                            {index === item.length - 1
+                              ? items.name + "/"
+                              : items.name}
                           </span>
                         ))
                       : null}
@@ -261,6 +279,7 @@ const PlaylistsInf = () => {
           ))}
         </div>
       </div>
+      <BroadcastHall ref={Ref} data={songID} num={num} visible={visible} />
     </div>
   ) : (
     <div className="mt-[20%]">

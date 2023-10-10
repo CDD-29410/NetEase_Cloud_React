@@ -2,6 +2,7 @@ import React from "react";
 import { Icon } from "@iconify/react";
 import { Button, Modal } from "antd-mobile";
 import SidebarNav from "./SidebarNav";
+import { Logout } from "@/request";
 import { useNavigate } from "react-router-dom";
 
 export default function SideBar() {
@@ -77,7 +78,7 @@ export default function SideBar() {
                     primary: true,
                     style: { backgroundColor: "#1677ff" },
                     onClick: () => {
-                      console.log("1111");
+                      Logout();
                     },
                   },
                   {

@@ -1,11 +1,21 @@
 //所有的请求
 import axios from "axios";
+import { useEffect } from "react";
 // import dayjs from "dayjs";
 // const timestamp = dayjs().valueOf()
 // console.log(timestamp)
 const http = axios.create({
   baseURL: "https://netease-cloud-music-api-five-roan-88.vercel.app",
 });
+// 退出登录
+export const Logout = () => http.get("/logout");
+
+//登录状态
+export const getLoginStatus = () => http.get("/login/status");
+
+getLoginStatus()
+  .then((res) => console.log(res))
+  .catch((err) => console.log(err));
 
 // 轮播
 export const homepageBlockPage = () => http.get("/homepage/block/page");
@@ -38,6 +48,10 @@ export const playlistDetail = (id) =>
 // 歌单音乐数据
 export const playlistTrackAll = (id) =>
   http.get("/playlist/track/all", { params: { id } });
+
+export const getMP3 = async (id) => {
+  await http.get("/song/url/v1", { params: { id, level: "standard" } });
+};
 
 //搜索框
 export const SearchBox = (params) => http.get(`cloudsearch?keywords=${params}`);
