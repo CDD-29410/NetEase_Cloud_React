@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Icon } from "@iconify/react";
 import { homepageBlockPage } from "@/request/index";
 import SkeletonInf from "@/components/Skeleton";
+import { Kebabs } from "../components/Kebabs";
 export default function Detail() {
   const [DetailData, setDetailData] = useState([]);
   useEffect(() => {
@@ -21,9 +22,7 @@ export default function Detail() {
             排行榜
             <Icon icon="icon-park:right" width="5vw" height="5vw" />
           </div>
-          <div>
-            <Icon icon="ant-design:more-outlined" width="5vw" height="5vw" />
-          </div>
+          <Kebabs />
         </div>
         <div className=" ClearLine h-[55vw] overflow-x-auto">
           {DetailData.length > 0 ? (
@@ -61,7 +60,7 @@ export default function Detail() {
                               {items.uiElement.mainTitle.title}
                             </div>
                             <div className="flex text-[2.7vw] text-[#7A8086]">
-                              {items.resourceExtInfo?.songData.artists.map(
+                              {items.resourceExtInfo?.songData?.artists.map(
                                 (names, index) => (
                                   <div key={index}>
                                     {index > 0 ? (

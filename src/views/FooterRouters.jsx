@@ -49,7 +49,7 @@ export default function Footer() {
       key: "Community",
       title: "社区",
       icon: <Icon icon="octicon:discussion-closed-24" />,
-      to: "/Search",
+      to: "/PlaylistSquare",
     },
   ];
 

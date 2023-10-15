@@ -4,6 +4,7 @@ import { Icon } from "@iconify/react";
 import dayjs from "dayjs";
 import { startTime } from "@/request";
 import SkeletonInf from "@/components/Skeleton";
+import { Kebabs } from "../components/Kebabs";
 import "@/index.css";
 export default function Detail() {
   const [DetailData, setDetailData] = useState([]);
@@ -25,9 +26,7 @@ export default function Detail() {
               <Icon icon="icon-park:right" width="5vw" height="5vw" />
             </span>
           </div>
-          <div>
-            <Icon icon="ant-design:more-outlined" width="5vw" height="5vw" />
-          </div>
+          <Kebabs />
         </div>
         <div className="h-[40vw]">
           {DetailData.length > 0 ? (

@@ -1,6 +1,7 @@
 import React from "react";
 import { Icon } from "@iconify/react";
 import SkeletonInf from "@/components/Skeleton";
+import { Kebabs } from "../components/Kebabs";
 import "@/index.css";
 export default function HotTopic() {
   const HotTopicData = ["#129934", "#296EEB", "#32576c", "#2e2842"];
@@ -12,9 +13,7 @@ export default function HotTopic() {
             热门话题
             <Icon icon="icon-park:right" width="5vw" height="5vw" />
           </p>
-          <div>
-            <Icon icon="ant-design:more-outlined" width="5vw" height="5vw" />
-          </div>
+          <Kebabs />
         </div>
         <div className=" ClearLine overflow-x-auto">
           {HotTopicData.length > 0 ? (

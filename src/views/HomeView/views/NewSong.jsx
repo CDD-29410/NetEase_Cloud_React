@@ -4,6 +4,8 @@ import { Space, Swiper } from "antd-mobile";
 import { homepageBlockPage } from "@/request/index";
 import SkeletonInf from "@/components/Skeleton";
 import styled from "styled-components";
+import { Kebabs } from "../components/Kebabs";
+
 const Div = styled.div`
   .adm-swiper-horizontal .adm-swiper-track-inner {
     width: 90vw;
@@ -14,12 +16,12 @@ export default function NewSong() {
   useEffect(() => {
     homepageBlockPage()
       .then((res) => {
-        // console.log(res.data.data.blocks[5]?.creatives);
+        // console.log(res.data.data);
         setNewSongData(res.data.data.blocks[5]?.creatives);
       })
       .catch((err) => console.log(err));
   }, []);
-  const items = newSongData.map((item, index) => (
+  const items = newSongData?.map((item, index) => (
     <Swiper.Item key={index}>
       <div key={index}>
         <div className="w-[80vw]">
@@ -64,14 +66,12 @@ export default function NewSong() {
       <div className="mt-[5vw] h-[70vw] overflow-hidden border-t border-solid border-[#ccc]">
         <div className="flex justify-between items-center text-[4vw] font-extrabold my-[5vw]">
           <p className="flex justify-between items-center text-[4vw]">
-            新歌速递
+            新歌新碟/数字专辑
             <Icon icon="icon-park:right" width="5vw" height="5vw" />
           </p>
-          <div>
-            <Icon icon="ant-design:more-outlined" width="5vw" height="5vw" />
-          </div>
+          <Kebabs />
         </div>
-        {newSongData.length > 0 ? (
+        {newSongData?.length > 0 ? (
           <Div className="h-[51vw]">
             <Space direction="vertical" block>
               <Swiper

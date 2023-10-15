@@ -16,14 +16,16 @@ const Div = styled.div`
     color: #999;
   }
 `;
-const tabItems = [
-  { key: "MineHome", title: "主页", Inf: <MineHome /> },
-  { key: "MineDynamic", title: "动态", Inf: <MineDynamic /> },
-  { key: "MinePodcasts", title: "博客", Inf: <MinePodcasts /> },
-];
+
 export default function MineNav() {
   const swiperRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
+
+  const tabItems = [
+    { key: "MineHome", title: "主页", Inf: <MineHome /> },
+    { key: "MineDynamic", title: "动态", Inf: <MineDynamic /> },
+    { key: "MinePodcasts", title: "博客", Inf: <MinePodcasts /> },
+  ];
   return (
     <Div className="sticky">
       <Tabs

@@ -5,6 +5,7 @@ export default function MineHome() {
     {
       title: "我的喜欢",
       inf: "喜欢的音乐",
+      text: "111",
       style: {
         borderColor: "#FEE7EA",
         background: "linear-gradient(#FEE7EA, #FEF5F6)",
@@ -14,20 +15,22 @@ export default function MineHome() {
     {
       title: "累计听歌",
       inf: "听歌的排行",
+      text: "111",
       style: {
         borderColor: "#FAF4DA",
         background: "linear-gradient(#FAF4DA, #FDFBF0)",
       },
-      icon: <Icon icon="mdi:heart" />,
+      icon: <Icon icon="fluent:list-16-filled" rotate={3} />,
     },
     {
       title: "步骤关键词",
       inf: "黑胶时光机",
+      text: "111",
       style: {
         borderColor: "#EBF1F9",
         background: "linear-gradient(#EBF1F9, #F6F9FC)",
       },
-      icon: <Icon icon="mdi:heart" />,
+      icon: <Icon icon="eos-icons:hourglass" />,
     },
   ];
   return (
@@ -44,7 +47,7 @@ export default function MineHome() {
               <div>
                 <div className="h-[5vw]">{item.title}</div>
                 <p className="text-[4vw]  line-clamp-2 font-[600] text-[#333]">
-                  1111大大1111大大1111大大1111大大1111大大
+                  {item.text}
                 </p>
               </div>
               <div className="flex items-center truncate">

@@ -5,6 +5,7 @@ import { Swiper } from "antd-mobile";
 import { personalized } from "@/request/index";
 import SkeletonInf from "@/components/Skeleton";
 import { useNavigate } from "react-router-dom";
+import { Kebabs } from "../components/Kebabs";
 
 const Div = styled.div`
   .lunbo::-webkit-scrollbar {
@@ -45,9 +46,8 @@ const Playlists = () => {
             推荐歌单
             <Icon icon="icon-park:right" width="5vw" height="5vw" />
           </p>
-          <div>
-            <Icon icon="ant-design:more-outlined" width="5vw" height="5vw" />
-          </div>
+
+          <Kebabs />
         </div>
 
         <div className="h-[45vw] mt-[2vw] overflow-hidden">

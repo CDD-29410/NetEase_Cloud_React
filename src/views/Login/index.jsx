@@ -15,11 +15,11 @@ export default function Login() {
     timer.current = setInterval(() => {
       getLoginQrCheck({ key: uniKey.current, timestamp: Date.now() })
         .then((res) => {
-          console.log(res.data.code);
+          // console.log(res.data.code);
           setStatus(res.data.code);
           if ([800, 803].includes(res.data.code)) clearInterval(timer);
           if (res.data.code === 803) {
-            console.log(res.data.cookie);
+            // console.log(res.data.cookie);
             store.set("__m__cookie", res.data.cookie);
             clearInterval(timer);
             navigate("/HomeView");

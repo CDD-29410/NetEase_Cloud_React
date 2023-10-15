@@ -79,6 +79,7 @@ export default function SideBar() {
                     style: { backgroundColor: "#1677ff" },
                     onClick: () => {
                       Logout();
+                      navigate("/Login");
                     },
                   },
                   {

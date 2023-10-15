@@ -8,6 +8,8 @@ import "./index.css";
 import Bar from "./components/Bar.jsx";
 import Login from "./views/Login";
 import PlaylistsInf from "./views/HomeView/components/PlaylistsInf";
+import PlaylistSquare from "./views/PlaylistSquare";
+import PlaylistTag from "./views/PlaylistSquare/views/PlaylistTag";
 
 const App = () => {
   return (
@@ -20,10 +22,14 @@ const App = () => {
         <Route path="/Podcasts" element={<Podcasts />}></Route>
         <Route path="/Mine" element={<Mine />}></Route>
         <Route path="/PlaylistsInf/:id" element={<PlaylistsInf />}></Route>
-        {/* 登錄 */}
-        <Route path="/Login" element={<Login />} /> {/* 登录 */}
-        {/* 測試*/}
+        {/* 登录 */}
+        <Route path="/Login" element={<Login />} />
+        {/* 测试*/}
         <Route path="/Bar" element={<Bar />}></Route>
+        {/* 歌单广场 */}
+        <Route path="/PlaylistSquare" element={<PlaylistSquare />} />
+        {/* 歌单标签 */}
+        <Route path="/PlaylistTag" element={<PlaylistTag />} />
       </Routes>
     </BrowserRouter>
   );
