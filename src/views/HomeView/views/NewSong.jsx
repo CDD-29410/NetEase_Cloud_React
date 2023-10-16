@@ -16,7 +16,7 @@ export default function NewSong() {
   useEffect(() => {
     homepageBlockPage()
       .then((res) => {
-        // console.log(res.data.data);
+        // console.log(res.data.data.blocks[1].creatives.slice(1));
         setNewSongData(res.data.data.blocks[5]?.creatives);
       })
       .catch((err) => console.log(err));
@@ -38,16 +38,16 @@ export default function NewSong() {
                 />
                 <div className="flex flex-col justify-between w-[60vw] h-[13vw]">
                   <p className="font-semibold h-[6vw] overflow-hidden text-[4vw] leading-[6vw]">
-                    {item.uiElement.mainTitle.title}
+                    {item.uiElement.mainTitle?.title}
                   </p>
                   <div className="h-[6vw] overflow-hidden leading-[6vw] text-[#7B7E87]">
                     <span className="text-[3vw]">
-                      {item.uiElement.subTitle.title}
+                      {item.uiElement.subTitle?.title}
                     </span>
-                    {item.uiElement.subTitle.title !== "" ? (
+                    {item.uiElement.subTitle?.title !== "" ? (
                       <span className="text-[3vw] ml-[2vw]">——</span>
                     ) : null}
-                    {item.resourceExtInfo.artists.map((item, index) => (
+                    {item.resourceExtInfo.artists?.map((item, index) => (
                       <span className="text-[3vw]" key={index}>
                         {item.name}
                       </span>

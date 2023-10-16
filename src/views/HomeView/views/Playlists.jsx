@@ -42,7 +42,10 @@ const Playlists = () => {
     <Div>
       <div className="mt-[5vw]">
         <div className="flex justify-between items-center text-[4vw] my-[5vw] font-extrabold">
-          <p className="flex justify-between items-center text-[4vw]">
+          <p
+            className="flex justify-between items-center text-[4vw]"
+            onClick={() => navigate("/PlaylistSquare")}
+          >
             推荐歌单
             <Icon icon="icon-park:right" width="5vw" height="5vw" />
           </p>

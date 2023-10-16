@@ -304,8 +304,9 @@ const PlaylistsInf = () => {
                     className="w-[28vw] mr-[2.5vw]"
                     key={index}
                     onClick={() => {
-                      navigate(`/PlaylistsInf/${item.id}`);
                       setIsChange(!isChange);
+                      navigate(`/PlaylistsInf/${item.id}`);
+                      window.location.reload();
                     }}
                   >
                     <div className="w-[28vw] h-[28vw] rounded-[8px] overflow-hidden relative pt-[1vw]">
