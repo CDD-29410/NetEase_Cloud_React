@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Toast } from "antd-mobile";
 
 export const PopupFn = (props) => {

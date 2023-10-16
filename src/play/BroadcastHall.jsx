@@ -10,8 +10,8 @@ import { Icon } from "@iconify/react";
 import styled from "styled-components";
 import { getMP3 } from "@/request";
 
-import { useSelector, useDispatch } from "react-redux";
-import { isRotate } from "@/redux/slices/IsALL";
+// import { useSelector, useDispatch } from "react-redux";
+// import { isRotate } from "@/redux/slices/IsALL";
 
 const Wrapper = styled.div`
   .adm-notice-bar .adm-notice-bar-content {
@@ -28,9 +28,9 @@ const BroadcastHall = forwardRef((props, _ref) => {
   const [getDuration, setDuration] = useState(); //总持续时间
   const refSong = useRef(); //获取播放器
 
-  const Judgement = useSelector((state) => state.Judgement.Rotate);
+  // const Judgement = useSelector((state) => state.Judgement.Rotate);
   // console.log(Judgement.Rotate);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   // 时间转换函数
   const formatTime = (time) => {
@@ -75,7 +75,7 @@ const BroadcastHall = forwardRef((props, _ref) => {
         bodyStyle={{ height: "100vh" }}
         bodyClassName="fixed bottom-0"
       >
-        <button
+        {/* <button
           type="button"
           className="h-[10vh]"
           onClick={() => {
@@ -86,7 +86,7 @@ const BroadcastHall = forwardRef((props, _ref) => {
           点击
         </button>
         <br />
-        {Judgement}
+        {Judgement} */}
         <div
           style={{
             backgroundRepeat: "no-repeat center",

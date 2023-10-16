@@ -49,7 +49,6 @@ export const GoodPlayList = (props) => {
             key={index}
             className="w-[30vw] h-[40vw] relative"
             onClick={() => {
-              console.log(item.id);
               navigate(`/PlaylistsInf/${item.id}`);
             }}
           >

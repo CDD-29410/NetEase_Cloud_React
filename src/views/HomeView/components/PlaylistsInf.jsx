@@ -1,6 +1,14 @@
 import React, { useEffect, useState, useRef, createContext } from "react";
 import { Icon } from "@iconify/react";
-import { NoticeBar, Skeleton, Popup, Toast, NavBar, Tabs } from "antd-mobile";
+import {
+  NoticeBar,
+  Skeleton,
+  Popup,
+  Toast,
+  NavBar,
+  Tabs,
+  Tag,
+} from "antd-mobile";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useRequest } from "ahooks";
 import {
@@ -47,6 +55,7 @@ const PlaylistsInf = () => {
   const [CommentPlaylist, setCommentPlaylist] = useState(false); // 歌单评论
   const [Comments, setComments] = useState(false); //是否显示评论
   const [isCollection, SetCollection] = useState(false); //是否收藏
+  const [BriefIntroduction, setBriefIntroduction] = useState(false); //歌单简介
 
   const { data: setListsInfS } = useRequest(() => playlistDetail(location));
   const { data: playlistTrackAllS } = useRequest(() => {
@@ -244,6 +253,7 @@ const PlaylistsInf = () => {
                     src={ListsInf.coverImgUrl}
                     alt=""
                     className="w-[24.5vw] h-[24.5vw] rounded-[2vw] "
+                    onClick={() => setBriefIntroduction(true)}
                   />
                   <div className="ml-[3vw] flex flex-col mr-[8vw]">
                     <div className="text-[3.5vw] text-[#F8F8F9] font-[700] line-clamp-2">
@@ -330,6 +340,7 @@ const PlaylistsInf = () => {
               <div
                 key={index}
                 onClick={() => (
+                  // eslint-disable-next-line no-sequences
                   index === 1 ? setComments(true) : null,
                   SetCollection(!isCollection)
                 )}
@@ -506,6 +517,71 @@ const PlaylistsInf = () => {
           }}
         >
           <PopupFn data={report} func={setKebabsVisibleReport} />
+        </Popup>
+
+        {/* 大头虾 */}
+        <Popup
+          visible={BriefIntroduction}
+          onMaskClick={() => {
+            setBriefIntroduction(false);
+          }}
+          bodyStyle={{
+            borderTopLeftRadius: "8px",
+            borderTopRightRadius: "8px",
+            minHeight: "100vh",
+          }}
+        >
+          <div
+            onClick={() => setBriefIntroduction(false)}
+            className="flex flex-col h-[100vh] items-center bg-slate-500 text-[#fff] overflow-y-auto"
+          >
+            <div className=" text-[5vw] w-[100%] mt-[2vh]">
+              <NavBar right="X" backArrow={false}>
+                <Tag
+                  color="#d3d1d1"
+                  className="text-center bg-transparent px-[2vw] py-[1vw] rounded-[1vw]"
+                >
+                  精品歌单
+                </Tag>
+              </NavBar>
+            </div>
+            <img
+              src={ListsInf.coverImgUrl}
+              alt=""
+              className="m-[4vw] w-[40vw] h-[40vw]"
+            />
+            <div className="text-[4vw] text-[#fff]">{ListsInf.name}</div>
+            <div className="px-[5vw] py-[2vw] w-[100%]">
+              <div className=" flex items-center ">
+                标签：
+                {ListsInf.tags.map((item, index) => (
+                  <Tag
+                    key={index}
+                    round
+                    color="#d3d1d1"
+                    className="text-center mr-[2vw] my-[1vw] px-[1vw] py-[.5vw]"
+                  >
+                    {item}
+                  </Tag>
+                ))}
+              </div>
+              <div className="mb-[10vh]">
+                {ListsInf.description.split("\n").map((item, index) => (
+                  <div key={index}>
+                    {item === "" ? <div className="h-[5vw]"></div> : item}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className=" fixed text-center w-[100%] h-[6vh] bg-slate-500 bottom-[0vw]">
+            <Tag
+              color="#d3d1d1"
+              className="text-center bg-transparent px-[2vw] py-[1vw] rounded-[1vw]"
+            >
+              保存封面
+            </Tag>
+          </div>
         </Popup>
 
         {/* 评论 */}
